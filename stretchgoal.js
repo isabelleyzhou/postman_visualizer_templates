@@ -1,3 +1,11 @@
+function recommend(obj) {
+  isPossibleMap(obj);
+  isPossibleBarChart(obj);
+  isPossibleScatterPlot(obj);
+  isPossibleTable(obj);
+  isPossibleTree(obj);
+}
+
 function isDictionary(obj) {
   if (typeof obj == "object" && !Array.isArray(obj) && obj !== null) {
     return true;
@@ -20,6 +28,7 @@ function isPossibleMap(obj) {
       key == "latitude" ||
       key == "longitude"
     ) {
+      console.log("A map can be made.");
       return true;
     }
     if (
@@ -28,6 +37,7 @@ function isPossibleMap(obj) {
       (value.length == 2 || value.length == 3) &&
       value.every(elem => typeof elem == "number")
     ) {
+      console.log("A map can be made.");
       return true;
     }
   }
@@ -35,6 +45,7 @@ function isPossibleMap(obj) {
 }
 function isPossibleTree(obj) {
   if (obj) {
+    console.log("A tree can be made.");
     return true;
   }
   return false;
@@ -245,3 +256,6 @@ function isPossibleBarChart(obj) {
     }
   }
 }
+
+var response = pm.response.json();
+recommend(response);
